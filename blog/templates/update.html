@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="form-card">
+    <h1>Post Güncelle</h1>
+    <form method="POST" novalidate>
+        {% csrf_token %}
+        <div class="form-group">
+            {{ form.baslik }}
+            {{ form.baslik.errors }}
+        </div>
+        <div class="form-group">
+            {{ form.icerik }}
+            {{ form.icerik.errors }}
+        </div>
+            <button type="submit" class="form-button">Güncelle</button>
+    </form>
+</div>
+{% endblock %}

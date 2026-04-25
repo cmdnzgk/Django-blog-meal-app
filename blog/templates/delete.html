@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="delete-card">
+    <h1 class="delete-title">Silmek istediğinize emin misiniz ?</h1>
+    <p><strong>Veri: {{ post.baslik }}</strong></p>
+    <form method="POST">
+        {% csrf_token %}
+        <button type="submit" class="delete-button">Veriyi Sil</button>
+    </form>
+</div>
+{% endblock %}

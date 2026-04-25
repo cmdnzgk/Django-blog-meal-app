@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="detail-card">
+    <h1>{{ meal.ad }}</h1>
+    <p class="p"><strong>Miktar: </strong>{{ meal.miktar }}</p>
+    <p class="p"><strong>Kalori: </strong>{{ meal.kalori }}</p>
+    <p class="p"><strong>Açıklama: </strong>{{ meal.aciklama }}</p>
+    <p class="p"><strong>Protein: </strong>{{ meal.protein }}</p>
+    <p class="p"><strong>Karbonhidrat: </strong>{{ meal.karbonhidrat }}</p>
+    <p class="p"><strong>Yağ: </strong>{{ meal.yag }}</p>
+    <p class="p"><strong>Öğün: </strong>{{ meal.get_ogun_display }}</p>
+    <p class="p"><strong>Eklenme tarihi: </strong>{{ meal.created_at|date:"d.m.Y H:i" }}</p>
+    <a href="{% url 'meal_update' meal.id %}" class="btn1">Güncelle</a>
+    <a href="{% url 'meal_delete' meal.id %}" class="btn1">Sil</a>
+</div>
+{% endblock %}

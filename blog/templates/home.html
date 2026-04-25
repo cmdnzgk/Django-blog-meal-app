@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+<h1 class="page-title">Post listesi</h1>
+    <a href="{% url 'post_create' %}" class="btn1">Veri ekle</a>
+        {% if posts %}
+            <div class="card-container">
+                {% for post in posts %}
+                    <div class="home-card">
+                        <h2>{{ post.baslik }}</h2>
+                        <p><strong>ID:</strong>{{ post.id }}</p>
+                        <p>{{ post.icerik|slice:":17" }}...</p>
+                        <a href="{% url 'post_detail' post.id %}" class="btn1">Devamını oku</a>
+                        <a href="{% url 'post_update' post.id %}" class="btn1">Düzenle</a>
+                        <a href="{% url 'post_delete' post.id %}" class="btn1">Sil</a>
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <p>Hiç veri yok.</p>
+        {% endif %}
+{% endblock %}

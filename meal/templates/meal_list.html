@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block content %}
+<h1 class="page-title">Yiyecek Listesi</h1>
+    <div class="summary-card">
+        <p><strong>Toplam öğün: </strong>{{ toplam_ogun }}</p>
+        <p><strong>Toplam kalori: </strong>{{ toplam_kalori }}</p>
+        <p><strong>Günlük hedef: </strong>{{ gunluk_hedef }}</p>
+        <p><strong>Protein alımınız: </strong>{{ toplam_protein }} g</p>
+        <p><strong>Karbonhidrat alımınız: </strong>{{ toplam_karbonhidrat }} g</p>
+        <p><strong>Yağ alımınınız: </strong>{{ toplam_yag }} g</p>
+        {% if hedef_asildi %}
+            <p class="danger-text"><strong>Kalan kalori: </strong>{{ kalan_kalori }}</p>
+        {% else %}
+            <p class="success-text"><strong>Kalan kalori: </strong>{{ kalan_kalori }}</p>
+        {% endif %}
+    </div>
+        <form method="GET">
+            <div class="form-group">
+                <input type="text" name="q" class="form-input" placeholder="Arama yap" value="{{ query|default:'' }}">
+            </div>
+            <div class="form-group">
+                <select name="ogun" class="form-input">
+                    <option value="" {% if not ogun %} selected {% endif %}>Tüm öğünler</option>
+                    <option value="kahvalti" {% if ogun == "kahvalti" %} selected {% endif %}>Kahvaltı</option>
+                    <option value="ogle" {% if ogun == "ogle" %} selected {% endif %}>Öğle</option>
+                    <option value="aksam" {% if ogun == "aksam" %} selected {% endif %}>Akşam</option>
+                </select>
+            </div>
+            <button type="submit" class="form-button">Filtrele</button>
+            <a href="{% url 'meal_list' %}" class="form-button2">Filtreyi temizle</a>
+        </form>
+            <a href="{% url 'meal_create' %}" class="btn1">Yiyecek Ekle</a>
+                {% if meals %}
+                    <div class="card-container">
+                        {% for meal in meals %}
+                            <div class="meal-card">
+                                <a href="{% url 'meal_detail' meal.id %}" class="btn1">
+                                    <h2>{{ meal.ad }}</h2>
+                                </a>
+                                <p><strong>Tarih: </strong>{{ meal.created_at }}</p>
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    <p class="message-box">Hiç veri yok.</p>
+                {% endif %}
+{% endblock %}

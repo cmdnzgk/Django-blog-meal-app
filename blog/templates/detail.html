@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="detail-card">
+    {% if post.baslik %}
+        <h1>{{ post.baslik }}</h1>
+    {% else %}
+        <p>Başlık yok</p>
+    {% endif %}
+    <p><strong>ID:</strong>{{ post.id }}</p>
+    {% if post.icerik %}
+        <p>{{ post.icerik }}</p>
+    {% else %}
+        <p>İçerik boş.</p>
+    {% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,266 @@
+body {
+    font-family: Arial;
+    background-color: lightblue;
+}
+
+p {
+    background-color: white;
+    display: inline-block;
+    margin: 20px 0;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px gray;
+}
+
+.p {
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    margin: 20px 0;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px gray;
+}
+
+a, button {
+    text-decoration: none;
+}
+
+.page-title {
+    text-align: center;
+    background-color: white;
+    width: 30%;
+    margin: auto;
+    margin-top: 40px;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.container {
+    width: 60%;
+    margin: auto;
+    margin-top: 40px;
+}
+
+.navbar {
+    background: orange;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0px 0px 10px gray;
+}
+
+.navbar a {
+    color: white;
+}
+
+.navbar h2 {
+    margin: 0;
+}
+
+.detail-card {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    margin: 0 0 10px 0;
+    box-shadow: 0px 0px 25px gray;
+}
+
+.detail-card h1 {
+    text-align: left;
+    margin: 0 0 20px 0;
+    color: darkblue;
+}
+
+.detail-card p {
+    line-height: 1.6;
+}
+
+.btn1,
+.btn2 {
+    display: inline-block;
+    background: orange;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 5px;
+    margin: 10px;
+    transition: 0.5s;
+}
+
+.btn1:hover {
+    background-color: greenyellow;
+    transform: scale(1.1);
+}
+
+.btn2:hover {
+    background-color: red;
+    transform: scale(1.1);
+}
+
+.form-card {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    margin: 0 0 10px 0;
+    box-shadow: 0px 0px 25px gray;
+}
+
+.form-group {
+    margin-bottom: 15px;
+    margin-top: 15px;
+}
+
+.form-input,
+.form-textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid gray;
+    border-radius: 16px;
+    box-sizing: border-box;
+}
+
+.form-textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+.form-button,
+.form-button2 {
+    display: inline-block;
+    background: orange;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 5px;
+    margin: 10px;
+    border: none;
+    cursor: pointer;
+    transition: 0.5s;
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 1;
+    font-family: Arial;
+}
+
+.form-button:hover {
+    background-color: greenyellow;
+    transform: scale(1.1);
+}
+
+.form-button2:hover {
+    background-color: red;
+    transform: scale(1.1);
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: bold;
+}
+
+.delete-card {
+    background: white;
+    padding: 25px;
+    border-radius: 10px;
+    margin-top: 30px;
+    box-shadow: 0 0 10px gray;
+    text-align: center;
+}
+
+.delete-title {
+    color: red;
+    margin-bottom: 20px;
+}
+
+.delete-button,
+.delete-button2 {
+    background: orange;
+    display: inline-block;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+.delete-button:hover {
+    background: greenyellow;
+    transform: scale(1.1);
+}
+
+.delete-button2:hover {
+    background: red;
+    transform: scale(1.1);
+}
+
+.error-box {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid gray;
+    border-radius: 16px;
+    box-sizing: border-box;
+}
+
+.message-box {
+    background-color: red;
+    color: white;
+    padding: 10px;
+    margin: 10px auto;
+    width: fit-content;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.summary-card {
+    background: purple;
+    padding: 20px;
+    border-radius: 10px;
+    margin: 20px 0;
+    box-shadow: 0px 0px 10px gray;
+}
+
+.summary-card p {
+    margin: 8px 0;
+}
+
+.success-text {
+    color: green;
+}
+
+.danger-text {
+    color: red;
+}
+
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.meal-card,
+.home-card {
+    background: white;
+    padding: 15px;
+    border-radius: 12px;
+    width: 250px;
+    box-shadow: 0 0 10px grey;
+    text-align: center;
+    transition: 0.5s;
+}
+
+.meal-card:hover,
+.home-card:hover {
+    transform: scale(1.1);
+}
+
+.meal-card,
+.home-card h2 {
+    margin-bottom: 10px;
+}
+
+.meal-card,
+.home-card a {
+    display: inline-block;
+    margin-top: 10px;
+}

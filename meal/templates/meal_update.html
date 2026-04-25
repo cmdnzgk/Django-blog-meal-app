@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="form-card">
+    <h1>Yiyecek Güncelle</h1>
+    <form method="POST" novalidate>
+        {% csrf_token %}
+        {% include "meal_form.html" %}
+        <button type="submit" class="form-button">Güncelle</button>
+        <a href="{% url 'meal_detail' meal.id %}" class="form-button">İptal</a>
+    </form>
+</div>
+{% endblock %}
