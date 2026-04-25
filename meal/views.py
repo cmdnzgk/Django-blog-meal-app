@@ -1,8 +1,19 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Meal
-from .forms import MealForm
+from .forms import MealForm, RegisterForm
 from django.contrib import messages
+from django.contrib.auth import login
 from django.db.models import Sum
+
+def register(request):
+    form = RegisterForm(request.POST or None)
+
+    if form.is_valid():
+        user = form.save()
+        login(request, user)
+        return redirect("meal_list")
+    
+    return render(request, "register.html", {"form": form})
 
 def meal_list(request):
     query = request.GET.get("q")

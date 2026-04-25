@@ -105,6 +105,28 @@ a, button {
     box-shadow: 0px 0px 25px gray;
 }
 
+.form-card ul {
+    list-style: disc;
+    padding-left: 20px;
+}
+
+.form-card li {
+    background: none;
+    box-shadow: none;
+    margin: 5px 0;
+    padding: 0;
+    border-radius: 0;
+}
+
+.form-card input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid gray;
+    border-radius: 15px;
+    box-sizing: border-box;
+    margin: 10px;
+}
+
 .form-group {
     margin-bottom: 15px;
     margin-top: 15px;
