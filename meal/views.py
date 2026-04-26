@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from .models import Meal
 from .forms import MealForm, RegisterForm
 from django.contrib import messages
-from django.contrib.auth import login
+from django.contrib.auth import login, authenticate, logout
 from django.db.models import Sum
 
 def register(request):
@@ -14,6 +14,22 @@ def register(request):
         return redirect("meal_list")
     
     return render(request, "register.html", {"form": form})
+
+def user_login(request):
+    if request.method == "POST":
+        username = request.POST.get("username")
+        password = request.POST.get("password")
+
+        user = authenticate(request, username = username, password = password)
+
+        if user is not None:
+            login(request, user)
+            messages.success(request, "Giriş başarılı.")
+            
+            return redirect("meal_list")
+        else:
+            messages.error(request, "Kullanıcı adı veya şifre hatalı.")
+    return render(request, "login.html")
 
 def meal_list(request):
     query = request.GET.get("q")
