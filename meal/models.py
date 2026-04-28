@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 class Meal(models.Model):
 
@@ -8,6 +9,8 @@ class Meal(models.Model):
         ("aksam", "Akşam"),
     ]
 
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    
     ad = models.CharField(max_length=100)
     kalori = models.IntegerField()
     miktar = models.CharField(max_length=100)

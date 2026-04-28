@@ -4,6 +4,7 @@ from .forms import MealForm, RegisterForm
 from django.contrib import messages
 from django.contrib.auth import login, authenticate, logout
 from django.db.models import Sum
+from django.contrib.auth.decorators import login_required
 
 def register(request):
     form = RegisterForm(request.POST or None)
@@ -31,10 +32,11 @@ def user_login(request):
             messages.error(request, "Kullanıcı adı veya şifre hatalı.")
     return render(request, "login.html")
 
+@login_required
 def meal_list(request):
     query = request.GET.get("q")
     ogun = request.GET.get("ogun")
-    meals = Meal.objects.all().order_by("-created_at")
+    meals = Meal.objects.filter(user = request.user).order_by("-created_at")
 
     if query:
         meals = meals.filter(ad__icontains = query)
@@ -65,23 +67,28 @@ def meal_list(request):
         "toplam_yag": toplam_yag,
     })
 
+@login_required
 def meal_detail(request, id):
-    meal = get_object_or_404(Meal, id = id)
+    meal = get_object_or_404(Meal, id = id, user = request.user)
     
     return render(request, "meal_detail.html", {"meal": meal})
 
-def meal_create(request): 
+@login_required
+def meal_create(request):
     form = MealForm(request.POST or None)
 
     if form.is_valid():
-        form.save()
+        meal = form.save(commit=False)
+        meal.user = request.user
+        meal.save()
         messages.success(request, "Yiyecek başarıyla eklendi.")
         return redirect("meal_list")
     
     return render(request, "meal_create.html", {"form": form})
 
+@login_required
 def meal_update(request, id):
-    meal = get_object_or_404(Meal, id = id)
+    meal = get_object_or_404(Meal, id = id, user = request.user)
     form = MealForm(request.POST or None, instance=meal)
 
     if form.is_valid():
@@ -93,8 +100,9 @@ def meal_update(request, id):
         "form": form,
         "meal": meal,})
 
+@login_required
 def meal_delete(request, id):
-    meal = get_object_or_404(Meal, id = id)
+    meal = get_object_or_404(Meal, id = id, user = request.user)
 
     if request.method == "POST":
         meal.delete()
