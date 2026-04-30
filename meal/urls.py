@@ -9,4 +9,5 @@ urlpatterns = [
     path("delete/<int:id>/", views.meal_delete, name="meal_delete"),
     path("register/", views.register, name="register"),
     path("login/", views.user_login, name="user_login"),
+    path("logout/", views.user_logout, name="user_logout"),
 ]

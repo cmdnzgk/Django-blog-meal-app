@@ -5,4 +5,11 @@
     <a href="{% url 'meal_list' %}" class="btn2">
         <h2>Yiyecekler</h2>
     </a>
+    {% if user.is_authenticated %}
+        <span>Hoş geldin, {{ user.username }}</span>
+        <a href="{% url 'user_logout' %}" class="btn2">Çıkış Yap</a>
+    {% else %}
+        <a href="{% url 'user_login' %}" class="btn1">Giriş Yap</a>
+        <a href="{% url 'register' %}" class="btn1">Kayıt Ol</a>
+    {% endif %}
 </nav>

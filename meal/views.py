@@ -32,6 +32,11 @@ def user_login(request):
             messages.error(request, "Kullanıcı adı veya şifre hatalı.")
     return render(request, "login.html")
 
+def user_logout(request):
+    logout(request)
+    messages.success(request, "Çıkış yapıldı.")
+    return redirect("user_login")
+
 @login_required
 def meal_list(request):
     query = request.GET.get("q")
